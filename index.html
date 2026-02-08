@@ -1,0 +1,1922 @@
+<!DOCTYPE html>
+
+<html lang="es">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Snipp'n Craft's | Papercrafts Únicos y Personalizados</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --primary: #FF6B6B;
+      --secondary: #4ECDC4;
+      --accent: #FFE66D;
+      --dark: #2C3E50;
+      --light: #FFF5F5;
+      --paper: #FDF6E3;
+    }
+
+    body {
+      font-family: 'Nunito', sans-serif;
+      background-color: var(--light);
+      color: var(--dark);
+      overflow-x: hidden;
+    }
+
+    h1,
+    h2,
+    h3,
+    .brand-font {
+      font-family: 'Fredoka One', cursive;
+    }
+
+    /* Navigation */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+      padding: 1rem 5%;
+      box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+      border-bottom: 3px dashed var(--primary);
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      color: var(--primary);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .logo-icon {
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(45deg, #333 50%, #fff 50%);
+      border-radius: 8px;
+      position: relative;
+      border: 3px solid var(--dark);
+      box-shadow: 3px 3px 0 var(--dark);
+    }
+
+    .logo-icon::before,
+    .logo-icon::after {
+      content: '';
+      position: absolute;
+      width: 12px;
+      height: 20px;
+      background: var(--dark);
+      top: -10px;
+      border-radius: 50% 50% 0 0;
+    }
+
+    .logo-icon::before {
+      left: 5px;
+      transform: rotate(-15deg);
+      background: white;
+      border: 2px solid var(--dark);
+    }
+
+    .logo-icon::after {
+      right: 5px;
+      transform: rotate(15deg);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--dark);
+      font-weight: 700;
+      position: relative;
+      padding: 0.5rem;
+      transition: all 0.3s;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 3px;
+      background: var(--primary);
+      transition: width 0.3s;
+      border-radius: 2px;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .mobile-menu {
+      display: none;
+      flex-direction: column;
+      gap: 4px;
+      cursor: pointer;
+    }
+
+    .mobile-menu span {
+      width: 25px;
+      height: 3px;
+      background: var(--dark);
+      border-radius: 3px;
+      transition: 0.3s;
+    }
+
+    /* Hero Section */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #FFE5E5 0%, #E5F3FF 100%);
+      position: relative;
+      overflow: hidden;
+      padding: 6rem 2rem 2rem;
+    }
+
+    .hero-bg-pattern {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-image:
+        radial-gradient(circle at 20% 50%, rgba(255, 107, 107, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(78, 205, 196, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 40% 20%, rgba(255, 230, 109, 0.1) 0%, transparent 50%);
+      animation: float 20s infinite ease-in-out;
+    }
+
+    @keyframes float {
+
+      0%,
+      100% {
+        transform: translate(0, 0);
+      }
+
+      33% {
+        transform: translate(30px, -30px);
+      }
+
+      66% {
+        transform: translate(-20px, 20px);
+      }
+    }
+
+    .hero-content {
+      max-width: 1200px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-text h1 {
+      font-size: 4rem;
+      color: var(--primary);
+      margin-bottom: 1rem;
+      line-height: 1.1;
+      text-shadow: 4px 4px 0px rgba(0, 0, 0, 0.1);
+      animation: slideInLeft 1s ease-out;
+    }
+
+    .hero-text .subtitle {
+      font-size: 1.5rem;
+      color: var(--dark);
+      margin-bottom: 2rem;
+      font-weight: 700;
+      animation: slideInLeft 1s ease-out 0.2s both;
+    }
+
+    .hero-text p {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+      color: #555;
+      animation: slideInLeft 1s ease-out 0.4s both;
+    }
+
+    @keyframes slideInLeft {
+      from {
+        opacity: 0;
+        transform: translateX(-50px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    .cta-buttons {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      animation: slideInLeft 1s ease-out 0.6s both;
+    }
+
+    .btn {
+      padding: 1rem 2rem;
+      border: none;
+      border-radius: 50px;
+      font-family: 'Nunito', sans-serif;
+      font-weight: 800;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: all 0.3s;
+      text-decoration: none;
+      display: inline-block;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: white;
+      box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(255, 107, 107, 0.6);
+    }
+
+    .btn-secondary {
+      background: white;
+      color: var(--dark);
+      border: 3px solid var(--dark);
+      box-shadow: 4px 4px 0 var(--dark);
+    }
+
+    .btn-secondary:hover {
+      transform: translate(2px, 2px);
+      box-shadow: 2px 2px 0 var(--dark);
+    }
+
+    .hero-visual {
+      position: relative;
+      animation: slideInRight 1s ease-out;
+    }
+
+    @keyframes slideInRight {
+      from {
+        opacity: 0;
+        transform: translateX(50px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    .paper-card {
+      background: white;
+      padding: 2rem;
+      border-radius: 20px;
+      box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.1),
+        0 0 0 4px var(--dark);
+      transform: rotate(3deg);
+      transition: transform 0.3s;
+    }
+
+    .paper-card:hover {
+      transform: rotate(0deg) scale(1.02);
+    }
+
+    .mascot-container {
+      width: 100%;
+      height: 400px;
+      background: linear-gradient(135deg, #FFE5E5 0%, #FFF 100%);
+      border-radius: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      border: 3px dashed var(--primary);
+    }
+
+    .mascot {
+      font-size: 8rem;
+      animation: bounce 2s infinite;
+    }
+
+    @keyframes bounce {
+
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-20px);
+      }
+    }
+
+    .floating-elements {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+
+    .float-item {
+      position: absolute;
+      font-size: 2rem;
+      animation: floatRandom 10s infinite ease-in-out;
+    }
+
+    @keyframes floatRandom {
+
+      0%,
+      100% {
+        transform: translate(0, 0) rotate(0deg);
+      }
+
+      25% {
+        transform: translate(20px, -30px) rotate(10deg);
+      }
+
+      50% {
+        transform: translate(-10px, 20px) rotate(-5deg);
+      }
+
+      75% {
+        transform: translate(30px, 10px) rotate(5deg);
+      }
+    }
+
+    /* Section Styles */
+    section {
+      padding: 5rem 2rem;
+      position: relative;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .section-header h2 {
+      font-size: 3rem;
+      color: var(--primary);
+      margin-bottom: 1rem;
+      display: inline-block;
+      position: relative;
+    }
+
+    .section-header h2::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 4px;
+      background: var(--accent);
+      border-radius: 2px;
+    }
+
+    .section-header p {
+      font-size: 1.2rem;
+      color: #666;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* About Section */
+    .about {
+      background: var(--paper);
+      position: relative;
+    }
+
+    .about::before {
+      content: '';
+      position: absolute;
+      top: -50px;
+      left: 0;
+      width: 100%;
+      height: 50px;
+      background: linear-gradient(135deg, transparent 25%, var(--paper) 25%);
+    }
+
+    .about-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .about-image {
+      position: relative;
+    }
+
+    .paper-stack {
+      position: relative;
+      width: 100%;
+      height: 400px;
+    }
+
+    .paper-sheet {
+      position: absolute;
+      width: 90%;
+      height: 90%;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+      border: 2px solid var(--dark);
+    }
+
+    .paper-sheet:nth-child(1) {
+      top: 0;
+      left: 0;
+      transform: rotate(-5deg);
+      background: #FFE5E5;
+    }
+
+    .paper-sheet:nth-child(2) {
+      top: 10px;
+      left: 10px;
+      transform: rotate(3deg);
+      background: #E5F3FF;
+    }
+
+    .paper-sheet:nth-child(3) {
+      top: 20px;
+      left: 20px;
+      transform: rotate(-2deg);
+      background: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 4rem;
+    }
+
+    .about-content h3 {
+      font-size: 2rem;
+      color: var(--dark);
+      margin-bottom: 1rem;
+    }
+
+    .about-content p {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      margin-bottom: 1.5rem;
+      color: #555;
+    }
+
+    .highlight-box {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 15px;
+      border-left: 5px solid var(--secondary);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      margin: 1.5rem 0;
+    }
+
+    /* Products Section */
+    .products {
+      background: white;
+    }
+
+    .products-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+
+    .product-card {
+      background: white;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s;
+      border: 3px solid transparent;
+      position: relative;
+    }
+
+    .product-card::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+      transform: rotate(45deg);
+      transition: all 0.5s;
+      opacity: 0;
+    }
+
+    .product-card:hover::before {
+      animation: shine 0.5s ease-in-out;
+    }
+
+    @keyframes shine {
+      0% {
+        transform: translateX(-100%) translateY(-100%) rotate(45deg);
+        opacity: 0;
+      }
+
+      50% {
+        opacity: 1;
+      }
+
+      100% {
+        transform: translateX(100%) translateY(100%) rotate(45deg);
+        opacity: 0;
+      }
+    }
+
+    .product-card:hover {
+      transform: translateY(-10px);
+      border-color: var(--primary);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    }
+
+    .product-image {
+      height: 200px;
+      background: linear-gradient(135deg, var(--accent) 0%, var(--secondary) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .product-badge {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: var(--primary);
+      color: white;
+      padding: 0.3rem 0.8rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 800;
+      transform: rotate(5deg);
+    }
+
+    .product-info {
+      padding: 1.5rem;
+    }
+
+    .product-info h3 {
+      font-size: 1.3rem;
+      margin-bottom: 0.5rem;
+      color: var(--dark);
+    }
+
+    .product-info p {
+      color: #666;
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+
+    .product-price {
+      margin-top: 1rem;
+      font-size: 1.4rem;
+      color: var(--primary);
+      font-weight: 800;
+    }
+
+    /* SWOT Section */
+    .swot {
+      background: linear-gradient(135deg, #2C3E50 0%, #34495E 100%);
+      color: white;
+    }
+
+    .swot .section-header h2 {
+      color: var(--accent);
+    }
+
+    .swot .section-header h2::after {
+      background: var(--primary);
+    }
+
+    .swot-grid {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+
+    .swot-card {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      padding: 2rem;
+      border-radius: 20px;
+      border: 2px solid rgba(255, 255, 255, 0.2);
+      transition: all 0.3s;
+    }
+
+    .swot-card:hover {
+      transform: scale(1.02);
+      background: rgba(255, 255, 255, 0.15);
+    }
+
+    .swot-card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .swot-card ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .swot-card li {
+      padding: 0.5rem 0;
+      padding-left: 1.5rem;
+      position: relative;
+      line-height: 1.6;
+    }
+
+    .swot-card li::before {
+      content: '▸';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-weight: bold;
+    }
+
+    .strengths {
+      border-top: 4px solid #2ECC71;
+    }
+
+    .weaknesses {
+      border-top: 4px solid #E74C3C;
+    }
+
+    .opportunities {
+      border-top: 4px solid #3498DB;
+    }
+
+    .threats {
+      border-top: 4px solid #F39C12;
+    }
+
+    /* Organization Section */
+    .org {
+      background: var(--light);
+    }
+
+    .org-chart {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    .org-level {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .org-box {
+      background: white;
+      padding: 1.5rem 2rem;
+      border-radius: 15px;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      min-width: 200px;
+      position: relative;
+      border: 3px solid var(--dark);
+      transition: all 0.3s;
+    }
+
+    .org-box:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    }
+
+    .org-box.owner {
+      background: linear-gradient(135deg, var(--primary) 0%, #FF8E8E 100%);
+      color: white;
+      font-size: 1.3rem;
+      border-color: var(--dark);
+    }
+
+    .org-box.department {
+      background: white;
+      border-top: 4px solid var(--secondary);
+    }
+
+    .org-box.sub {
+      background: var(--paper);
+      border-top: 4px solid var(--accent);
+      font-size: 0.9rem;
+    }
+
+    .org-connector {
+      width: 2px;
+      height: 30px;
+      background: var(--dark);
+      position: relative;
+    }
+
+    .org-connector::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 2px;
+      background: var(--dark);
+    }
+
+    /* Marketing Section */
+    .marketing {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .marketing::before {
+      content: '';
+      position: absolute;
+      width: 200%;
+      height: 200%;
+      background: repeating-linear-gradient(45deg,
+          transparent,
+          transparent 10px,
+          rgba(255, 255, 255, 0.05) 10px,
+          rgba(255, 255, 255, 0.05) 20px);
+      animation: slide 20s linear infinite;
+    }
+
+    @keyframes slide {
+      0% {
+        transform: translate(0, 0);
+      }
+
+      100% {
+        transform: translate(50px, 50px);
+      }
+    }
+
+    .marketing .section-header h2 {
+      color: white;
+    }
+
+    .strategies {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .strategy-card {
+      background: rgba(255, 255, 255, 0.95);
+      color: var(--dark);
+      padding: 2rem;
+      border-radius: 20px;
+      text-align: center;
+      transition: all 0.3s;
+      border: 4px solid transparent;
+    }
+
+    .strategy-card:hover {
+      transform: translateY(-10px) rotate(2deg);
+      border-color: var(--accent);
+    }
+
+    .strategy-icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+
+    .strategy-card h3 {
+      font-size: 1.3rem;
+      margin-bottom: 0.5rem;
+      color: var(--primary);
+    }
+
+    /* Financial Section */
+    .financial {
+      background: white;
+    }
+
+    .financial-grid {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+    }
+
+    .financial-card {
+      background: white;
+      border-radius: 20px;
+      padding: 2rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      border: 3px solid var(--dark);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .financial-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent));
+    }
+
+    .financial-card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
+      color: var(--dark);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .financial-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .financial-table tr {
+      border-bottom: 2px dashed #eee;
+    }
+
+    .financial-table tr:last-child {
+      border-bottom: none;
+      font-weight: 800;
+      font-size: 1.1rem;
+      color: var(--primary);
+    }
+
+    .financial-table td {
+      padding: 1rem 0;
+    }
+
+    .financial-table td:last-child {
+      text-align: right;
+      font-weight: 700;
+    }
+
+    .total-box {
+      margin-top: 1.5rem;
+      padding: 1rem;
+      background: var(--accent);
+      border-radius: 10px;
+      text-align: center;
+      font-weight: 800;
+      font-size: 1.2rem;
+      color: var(--dark);
+      border: 3px solid var(--dark);
+    }
+
+    /* Contact Section */
+    .contact {
+      background: linear-gradient(135deg, var(--primary) 0%, #FF8E8E 100%);
+      color: white;
+      text-align: center;
+    }
+
+    .contact-content {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .contact h2 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+
+    .contact>p {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+      opacity: 0.95;
+    }
+
+    .contact-info-box {
+      background: rgba(255, 255, 255, 0.2);
+      padding: 2.5rem;
+      border-radius: 25px;
+      margin: 2.5rem 0;
+      backdrop-filter: blur(10px);
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .contact-item {
+      margin-bottom: 2rem;
+    }
+
+    .contact-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .contact-icon {
+      font-size: 2.5rem;
+      margin-bottom: 0.8rem;
+      display: block;
+    }
+
+    .contact-label {
+      font-size: 1rem;
+      opacity: 0.9;
+      margin-bottom: 0.5rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-weight: 700;
+    }
+
+    .contact-link {
+      color: white;
+      font-size: 1.4rem;
+      font-weight: 800;
+      text-decoration: none;
+      border-bottom: 3px solid var(--accent);
+      padding-bottom: 2px;
+      transition: all 0.3s;
+      display: inline-block;
+      word-break: break-all;
+    }
+
+    .contact-link:hover {
+      border-bottom-width: 5px;
+      transform: translateY(-2px);
+    }
+
+    .contact-divider {
+      width: 60px;
+      height: 2px;
+      background: rgba(255, 255, 255, 0.4);
+      margin: 1.5rem auto;
+      border-radius: 1px;
+    }
+
+    .contact-note {
+      font-size: 1.1rem;
+      opacity: 0.95;
+      margin-top: 1.5rem;
+      font-style: italic;
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-top: 2.5rem;
+    }
+
+    .social-btn {
+      width: 60px;
+      height: 60px;
+      background: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      color: var(--primary);
+      text-decoration: none;
+      transition: all 0.3s;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .social-btn:hover {
+      transform: translateY(-5px) rotate(10deg);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Footer */
+    footer {
+      background: var(--dark);
+      color: white;
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.9rem;
+    }
+
+    footer .brand-font {
+      color: var(--accent);
+      font-size: 1.2rem;
+    }
+
+    footer p {
+      margin: 0.5rem 0;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+
+      .mobile-menu {
+        display: flex;
+      }
+
+      .hero-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      .hero-text h1 {
+        font-size: 2.5rem;
+      }
+
+      .about-grid,
+      .swot-grid,
+      .financial-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .section-header h2 {
+        font-size: 2rem;
+      }
+
+      .org-level {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .contact-link {
+        font-size: 1.1rem;
+      }
+
+      .contact-info-box {
+        padding: 1.5rem;
+      }
+    }
+
+    /* Scroll Animations */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s ease-out;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Decorative Elements */
+    .scissors {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      font-size: 2rem;
+      opacity: 0.3;
+      pointer-events: none;
+      z-index: 100;
+      animation: snip 3s infinite;
+    }
+
+    @keyframes snip {
+
+      0%,
+      100% {
+        transform: rotate(0deg);
+      }
+
+      50% {
+        transform: rotate(-20deg);
+      }
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <!-- Navigation -->
+
+  <nav>
+
+    <div class="nav-container">
+
+      <a href="#" class="logo brand-font">
+
+        <div class="logo-icon"></div>
+
+        Snipp'n Craft's
+
+      </a>
+
+      <ul class="nav-links">
+
+        <li><a href="#inicio">Inicio</a></li>
+
+        <li><a href="#historia">Historia</a></li>
+
+        <li><a href="#productos">Productos</a></li>
+
+        <li><a href="#analisis">Análisis</a></li>
+
+        <li><a href="#organizacion">Organización</a></li>
+
+        <li><a href="#marketing">Marketing</a></li>
+
+        <li><a href="#finanzas">Finanzas</a></li>
+
+        <li><a href="#contacto">Contacto</a></li>
+
+      </ul>
+
+      <div class="mobile-menu">
+
+        <span></span>
+
+        <span></span>
+
+        <span></span>
+
+      </div>
+
+    </div>
+
+  </nav>
+
+  <!-- Hero Section -->
+
+  <section class="hero" id="inicio">
+
+    <div class="hero-bg-pattern"></div>
+
+    <div class="floating-elements">
+
+      <span class="float-item" style="top: 10%; left: 10%;">✂️</span>
+
+      <span class="float-item" style="top: 20%; right: 15%; animation-delay: 1s;">📄</span>
+
+      <span class="float-item" style="bottom: 20%; left: 20%; animation-delay: 2s;">⭐</span>
+
+      <span class="float-item" style="bottom: 10%; right: 10%; animation-delay: 3s;">🎨</span>
+
+    </div>
+
+    <div class="hero-content">
+
+      <div class="hero-text">
+
+        <h1>Snipp'n Craft's</h1>
+
+        <div class="subtitle">Arte en Papel, Creatividad Sin Límites</div>
+
+        <p>Figuras de papel (papercrafts) basadas en personajes originales, hechas a mano con ediciones limitadas por temporada. Productos creativos, personalizados y únicos para amantes del arte indie.</p>
+
+        <div class="cta-buttons">
+
+          <a href="#productos" class="btn btn-primary">Ver Productos</a>
+
+          <a href="#contacto" class="btn btn-secondary">Contactar</a>
+
+        </div>
+
+      </div>
+
+      <div class="hero-visual">
+
+        <div class="paper-card">
+
+          <div class="mascot-container">
+
+            <div class="mascot">😈</div>
+
+          </div>
+
+          <div style="text-align: center; margin-top: 1rem; font-weight: 800; color: var(--dark);">
+
+            ¡Edición Especial Disponible!
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- About Section -->
+
+  <section class="about" id="historia">
+
+    <div class="section-header fade-in">
+
+      <h2>Nuestra Historia</h2>
+
+      <p>De una idea personal a un sueño empresarial</p>
+
+    </div>
+
+    <div class="about-grid">
+
+      <div class="about-image fade-in">
+
+        <div class="paper-stack">
+
+          <div class="paper-sheet"></div>
+
+          <div class="paper-sheet"></div>
+
+          <div class="paper-sheet">✨</div>
+
+        </div>
+
+      </div>
+
+      <div class="about-content fade-in">
+
+        <h3>El Inicio de Todo</h3>
+
+        <p>Snipp'n Craft's nació como una iniciativa personal de <strong>Bryan Rosado Cruz</strong>, animador en Atlantic University, con el objetivo de convertir ideas creativas en productos divertidos y sostenibles financieramente.</p>
+
+        <div class="highlight-box">
+
+          <strong>La Oportunidad:</strong> Al identificar una falta en el mercado de Puerto Rico de muñecos de estilo papercraft artesanal, decidí hacer mi intento en el mundo empresarial.
+
+        </div>
+
+        <p>Mi pasión por crear, animar y jugar me ha llevado a expresarme a través de la venta de estos muñecos, buscando que todos puedan tener la libertad de expresarse con sus propios diseños.</p>
+
+        <p><strong>Meta:</strong> Crecer de forma gradual dentro del mercado creativo puertorriqueño, manteniendo la calidad artesanal y la conexión personal con cada cliente.</p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- Products Section -->
+
+  <section class="products" id="productos">
+
+    <div class="section-header fade-in">
+
+      <h2>Productos y Servicios</h2>
+
+      <p>Creatividad tangible en cada pieza</p>
+
+    </div>
+
+    <div class="products-grid">
+
+      <div class="product-card fade-in">
+
+        <div class="product-image">
+
+          🎭
+
+          <span class="product-badge">Nuevo</span>
+
+        </div>
+
+        <div class="product-info">
+
+          <h3>Figuras de Papel Originales</h3>
+
+          <p>Personajes únicos diseñados desde cero, ensamblados a mano con papel de alta calidad.</p>
+
+          <div class="product-price">Desde $15.00</div>
+
+        </div>
+
+      </div>
+
+      <div class="product-card fade-in">
+
+        <div class="product-image" style="background: linear-gradient(135deg, #FF6B6B 0%, #FFE66D 100%);">
+
+          🎃
+
+          <span class="product-badge">Edición Limitada</span>
+
+        </div>
+
+        <div class="product-info">
+
+          <h3>Ediciones por Temporada</h3>
+
+          <p>Colecciones especiales de Navidad, Halloween, Verano y más. Disponibles por tiempo limitado.</p>
+
+          <div class="product-price">Desde $20.00</div>
+
+        </div>
+
+      </div>
+
+      <div class="product-card fade-in">
+
+        <div class="product-image" style="background: linear-gradient(135deg, #4ECDC4 0%, #556270 100%);">
+
+          ✏️
+
+        </div>
+
+        <div class="product-info">
+
+          <h3>Personalizaciones</h3>
+
+          <p>Figuras con nombres, colores o detalles específicos según tu solicitud. ¡Hazlo tuyo!</p>
+
+          <div class="product-price">Desde $25.00</div>
+
+        </div>
+
+      </div>
+
+      <div class="product-card fade-in">
+
+        <div class="product-image" style="background: linear-gradient(135deg, #A8E6CF 0%, #DCEDC1 100%);">
+
+          📦
+
+        </div>
+
+        <div class="product-info">
+
+          <h3>Kits de Armado</h3>
+
+          <p>Para coleccionistas y aficionados al DIY. Incluye piezas precortadas e instrucciones.</p>
+
+          <div class="product-price">Desde $18.00</div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- SWOT Analysis -->
+
+  <section class="swot" id="analisis">
+
+    <div class="section-header fade-in">
+
+      <h2>Análisis FODA</h2>
+
+      <p>Conociendo nuestro entorno empresarial</p>
+
+    </div>
+
+    <div class="swot-grid">
+
+      <div class="swot-card strengths fade-in">
+
+        <h3>💪 Fortalezas</h3>
+
+        <ul>
+
+          <li>Productos originales con personajes propios</li>
+
+          <li>Bajo costo de producción (material: papel)</li>
+
+          <li>Alta posibilidad de personalización</li>
+
+          <li>Producción artesanal que añade valor creativo</li>
+
+          <li>Flexibilidad para ediciones limitadas</li>
+
+        </ul>
+
+      </div>
+
+      <div class="swot-card weaknesses fade-in">
+
+        <h3>⚠️ Debilidades</h3>
+
+        <ul>
+
+          <li>Capacidad de producción limitada (artesanal)</li>
+
+          <li>Dependencia del trabajo manual</li>
+
+          <li>Marca nueva con poco reconocimiento</li>
+
+          <li>Tiempo de elaboración por pieza</li>
+
+        </ul>
+
+      </div>
+
+      <div class="swot-card opportunities fade-in">
+
+        <h3>🚀 Oportunidades</h3>
+
+        <ul>
+
+          <li>Crecimiento del mercado de productos hechos a mano</li>
+
+          <li>Redes sociales para promoción directa</li>
+
+          <li>Interés en regalos únicos para fechas especiales</li>
+
+          <li>Colaboraciones con artistas y creadores</li>
+
+          <li>Expansión futura a formatos digitales</li>
+
+        </ul>
+
+      </div>
+
+      <div class="swot-card threats fade-in">
+
+        <h3>⚡ Amenazas</h3>
+
+        <ul>
+
+          <li>Copias o imitaciones de diseños</li>
+
+          <li>Cambios en costos de materiales</li>
+
+          <li>Competencia de productos industriales baratos</li>
+
+          <li>Variaciones en la demanda del mercado</li>
+
+          <li>Dependencia de plataformas digitales</li>
+
+        </ul>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- Organization Section -->
+
+  <section class="org" id="organizacion">
+
+    <div class="section-header fade-in">
+
+      <h2>Estructura Organizativa</h2>
+
+      <p>Gestión eficiente y flexible</p>
+
+    </div>
+
+    <div class="org-chart fade-in">
+
+      <div class="org-box owner">
+
+        <div style="font-size: 2rem; margin-bottom: 0.5rem;">👤</div>
+
+        <div>Bryan Rosado Cruz</div>
+
+        <small>Dueño & Fundador</small>
+
+      </div>
+
+      <div class="org-connector"></div>
+
+      <div class="org-level">
+
+        <div class="org-box department">
+
+          <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">🎨</div>
+
+          <div>Creación Artística</div>
+
+          <small>Diseño de personajes y concepto visual</small>
+
+        </div>
+
+        <div class="org-box department">
+
+          <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">✂️</div>
+
+          <div>Producción Artesanal</div>
+
+          <small>Figuras de papel hechas a mano</small>
+
+        </div>
+
+        <div class="org-box department">
+
+          <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">📱</div>
+
+          <div>Comercialización Digital</div>
+
+          <small>Redes sociales y tienda online</small>
+
+        </div>
+
+      </div>
+
+      <div class="org-level" style="margin-top: 1rem;">
+
+        <div class="org-box sub">
+
+          <div>📦</div>
+
+          <div>Empaque y Envío</div>
+
+        </div>
+
+        <div class="org-box sub">
+
+          <div>💬</div>
+
+          <div>Atención al Cliente</div>
+
+        </div>
+
+        <div class="org-box sub">
+
+          <div>📊</div>
+
+          <div>Gestión Administrativa</div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- Marketing Section -->
+
+  <section class="marketing" id="marketing">
+
+    <div class="section-header fade-in">
+
+      <h2>Estrategia de Marketing</h2>
+
+      <p>Conectando con nuestra audiencia</p>
+
+    </div>
+
+    <div class="strategies">
+
+      <div class="strategy-card fade-in">
+
+        <div class="strategy-icon">📱</div>
+
+        <h3>Redes Sociales</h3>
+
+        <p>Publicaciones frecuentes en Instagram, TikTok y Facebook mostrando productos y procesos creativos.</p>
+
+      </div>
+
+      <div class="strategy-card fade-in">
+
+        <div class="strategy-icon">🎥</div>
+
+        <h3>Contenido Visual</h3>
+
+        <p>Fotos y videos de figuras terminadas, tutoriales cortos y detrás de cámaras del proceso creativo.</p>
+
+      </div>
+
+      <div class="strategy-card fade-in">
+
+        <div class="strategy-icon">🏷️</div>
+
+        <h3>Promociones</h3>
+
+        <p>Ofertas por temporadas, paquetes especiales y envío gratuito en compras superiores a $50.</p>
+
+      </div>
+
+      <div class="strategy-card fade-in">
+
+        <div class="strategy-icon">🤝</div>
+
+        <h3>Colaboraciones</h3>
+
+        <p>Trabajo con artistas locales y creadores de contenido para aumentar visibilidad de la marca.</p>
+
+      </div>
+
+      <div class="strategy-card fade-in">
+
+        <div class="strategy-icon">📧</div>
+
+        <h3>Marketing Directo</h3>
+
+        <p>Comunicación personalizada con clientes para informar novedades y lanzamientos exclusivos.</p>
+
+      </div>
+
+      <div class="strategy-card fade-in">
+
+        <div class="strategy-icon">🎪</div>
+
+        <h3>Eventos Locales</h3>
+
+        <p>Participación en ferias y exposiciones artísticas de Puerto Rico para captar nuevos clientes.</p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- Financial Section -->
+
+  <section class="financial" id="finanzas">
+
+    <div class="section-header fade-in">
+
+      <h2>Plan Financiero</h2>
+
+      <p>Inversión inicial y proyecciones</p>
+
+    </div>
+
+    <div class="financial-grid">
+
+      <div class="financial-card fade-in">
+
+        <h3>💰 Gastos Iniciales</h3>
+
+        <table class="financial-table">
+
+          <tr>
+
+            <td>Registro de empresa y permisos</td>
+
+            <td>$200</td>
+
+          </tr>
+
+          <tr>
+
+            <td>Licencias y patentes municipales</td>
+
+            <td>$100</td>
+
+          </tr>
+
+          <tr>
+
+            <td>Equipos y materiales iniciales</td>
+
+            <td>$300</td>
+
+          </tr>
+
+          <tr>
+
+            <td>Marketing inicial</td>
+
+            <td>$150</td>
+
+          </tr>
+
+          <tr>
+
+            <td>Contingencia (10%)</td>
+
+            <td>$75</td>
+
+          </tr>
+
+        </table>
+
+        <div class="total-box">
+
+          Total Inversión Inicial: $825
+
+        </div>
+
+      </div>
+
+      <div class="financial-card fade-in">
+
+        <h3>📊 Gastos Mensuales</h3>
+
+        <table class="financial-table">
+
+          <tr>
+
+            <td>Materiales y suministros</td>
+
+            <td>$100</td>
+
+          </tr>
+
+          <tr>
+
+            <td>Internet y servicios básicos</td>
+
+            <td>$50</td>
+
+          </tr>
+
+          <tr>
+
+            <td>Envíos y empaques</td>
+
+            <td>$80</td>
+
+          </tr>
+
+          <tr>
+
+            <td>Marketing mensual</td>
+
+            <td>$50</td>
+
+          </tr>
+
+        </table>
+
+        <div class="total-box">
+
+          Total Gastos Mensuales: $280
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- Contact Section -->
+
+  <section class="contact" id="contacto">
+
+    <div class="contact-content fade-in">
+
+      <h2>¡Hagamos Magia!</h2>
+
+      <p>¿Tienes una idea personalizada? ¿Quieres colaborar con nosotros? ¡Escríbenos y creemos algo único juntos!</p>
+
+      <div class="contact-info-box">
+
+        <div class="contact-item">
+
+          <span class="contact-icon">📧</span>
+
+          <div class="contact-label">Correo Electrónico</div>
+
+          <a href="mailto:blcr122.br@gmail.com" class="contact-link">
+
+            blcr122.br@gmail.com
+
+          </a>
+
+        </div>
+
+        <div class="contact-divider"></div>
+
+        <div class="contact-item">
+
+          <span class="contact-icon">📱</span>
+
+          <div class="contact-label">Teléfono / WhatsApp</div>
+
+          <a href="tel:9392865777" class="contact-link">
+
+            939-286-5777
+
+          </a>
+
+        </div>
+
+      </div>
+
+      <p class="contact-note">Disponible para pedidos personalizados, colaboraciones artísticas y eventos especiales en Puerto Rico.</p>
+
+      <div class="social-links">
+
+        <a href="#" class="social-btn" title="Instagram">📷</a>
+
+        <a href="#" class="social-btn" title="TikTok">🎵</a>
+
+        <a href="#" class="social-btn" title="Facebook">📘</a>
+
+        <a href="mailto:blcr122.br@gmail.com" class="social-btn" title="Email">✉️</a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- Footer -->
+
+  <footer>
+
+    <p><span class="brand-font">Snipp'n Craft's</span> - Bryan Rosado Cruz</p>
+
+    <p>📧 blcr122.br@gmail.com | 📱 939-286-5777</p>
+
+    <p>Atlantic University | Empresarismo ADM 104 | 2026</p>
+
+    <p style="margin-top: 1rem; font-size: 0.8rem;">Hecho con ❤️ y mucho papel en Puerto Rico</p>
+
+  </footer>
+
+  <div class="scissors">✂️</div>
+
+  <script>
+    // Smooth Scroll
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+    // Fade In Animation on Scroll
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, observerOptions);
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    // Mobile Menu Toggle
+    const mobileMenu = document.querySelector('.mobile-menu');
+    const navLinks = document.querySelector('.nav-links');
+    mobileMenu.addEventListener('click', () => {
+      navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+      if (navLinks.style.display === 'flex') {
+        navLinks.style.position = 'absolute';
+        navLinks.style.top = '100%';
+        navLinks.style.left = '0';
+        navLinks.style.right = '0';
+        navLinks.style.background = 'white';
+        navLinks.style.flexDirection = 'column';
+        navLinks.style.padding = '1rem';
+        navLinks.style.boxShadow = '0 10px 20px rgba(0,0,0,0.1)';
+      }
+    });
+    // Close mobile menu when clicking a link
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        if (window.innerWidth <= 768) {
+          navLinks.style.display = 'none';
+        }
+      });
+    });
+  </script>
+
+</body>
+
+</html>
